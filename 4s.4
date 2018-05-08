@@ -1,0 +1,63 @@
+-||||Forsooth Test Game 1||||-
+---used vars: D,n,c,C,1,2,3,4,t,T,W,S,B,E
+-v-working directory
+d D '/storage/emulated/0/qpython'
+
+-v-player name:String
+i n
+
+-v-function for continues: p |C to invoke
+i c
+d C ! 4 n ~ Press_Enter_To_Continue c
+
+---generate roll of 3d6
+---invoke with p |1
+-v-random int will be t , p |t
+d 1 ! 4 m i_t p_|2
+d 2 ! r 3 4 m £_T_1_6 +_t_int(v['T'])
+---generate roll of 1d20
+---invoke with p |4
+-v-random int will be 3 , p |3
+d 4 ! £ 3 1 20
+
+-v-clear screen function: wipe
+d W ! @os.system('clear')
+
+#-1-beginning prompt{
+p |W
+4 n p -> Welcome! What is your name?
+4 n ~ $: n
+p |n it is!
+
+p |C
+#-/1}beginning prompt
+
+--clear screen
+p |W
+
+##-2-stat gen{
+p Alright |n , lets roll some stats!
+
+p \nFirst comes Strength,\n
+p |C
+4 m p_|1 D_S_int(v['t'])
+p |W
+p Your Strength comes out to |S .
+
+p \nNext comes your Intellect, or Brain.\n
+p |C
+4 m p_|1 D_B_int(v['t'])
+p |W
+p Your Brain comes out to |B .
+
+p \nFinally, your Evasion.
+p |C
+4 m p_|1 D_E_int(v['t'])
+p |W
+p Your Evasion comes out to |E .
+p |C
+##-/2-}stat gen
+p |W
+p In review:
+p \n Strength: |S \n Brain: |B \n Evasion: |E \n\n
+p |C
