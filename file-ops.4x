@@ -1,0 +1,11 @@
+\ File Operations
+0 Value fd-in
+0 Value fd-out
+
+: read-in ( addr u -- ) r/o open-file throw to fd-in ;
+: write-out ( addr u -- ) w/o create-file throw to fd-out ;
+: read-close ( -- ) fd-in close-file throw ;
+: write-close ( -- ) fd-out close-file throw ;
+
+: write-| ( -- ) fd-out write-line throw ;
+: read-| ( -- ) fd-in read-line throw ;

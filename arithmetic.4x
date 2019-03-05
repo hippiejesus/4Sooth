@@ -1,0 +1,26 @@
+
+\ Return if number is positive or negative
+: pos-neg
+	      DUP 0 > IF s" positive"   resend ELSE
+              DUP 0 = IF s" zero"       resend ELSE
+	      DUP 0 < IF s" negative"   resend ELSE
+	      s" error" resend
+	      s" not a valid number" report
+	      THEN THEN THEN ROT DROP
+;
+
+\ Return if a number is odd or even
+: even-odd
+	      DUP       0 = IF s" zero" resend ELSE
+              DUP 2 MOD 0 = IF s" even" resend ELSE
+	      DUP 2 MOD 1 = IF s" odd"  resend ELSE
+	      s" error" resend
+	      s" not a valid number" report
+	      THEN THEN THEN ROT DROP
+;
+
+\ Square a number
+: ^2 DUP * ;
+
+\ Cube a number
+: ^3 DUP DUP * * ;

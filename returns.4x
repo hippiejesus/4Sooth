@@ -1,0 +1,17 @@
+
+\ Return and Error feeds
+VARIABLE ret1
+VARIABLE ret2
+
+VARIABLE err1
+VARIABLE err2
+
+: return ret2 @ ret1 @ ;
+: resend ret1 ! ret2 ! ;
+
+: error err2 @ err1 @ ;
+: report err1 ! err2 ! ;
+
+: print CR . ;
+: reprint CR return type ;
+: erprint CR error type ;

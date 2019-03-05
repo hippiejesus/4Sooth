@@ -1,0 +1,24 @@
+: place over over >r >r char+ swap chars cmove r> r> c! ;
+
+: append                         ( a1 n2 a2 --)
+        over over                  \ duplicate target and count
+        >r >r                      \ save them on the return stack
+        count chars +              \ calculate offset target
+        swap chars move            \ now move the source string
+        r> r>                      \ get target and count
+        dup >r                     \ duplicate target and save one
+        c@ +                       \ calculate new count
+        r> c!                      \ get address and store
+;
+
+create string 32 chars allot
+: $< string place ;
+: $+ string append string count resend ;
+: $>> string count type ;
+: $fd string count fd-out write-line throw ;
+
+: 1> pad place ;
+: << pad +place ;
+: >fd pad count fd-out write-line throw ;
+: >sd pad count type ;
+: >>> pad count resend ;

@@ -1,0 +1,5 @@
+
+\ Number Base Shortcuts
+: b36 36 BASE ! ;
+: b16 16 BASE ! ;
+: b10 10 BASE ! ;
